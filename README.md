@@ -1,5 +1,7 @@
-#API Tareas con Node
+#API Tareas con NodeJs
 
+En primer lugar creamos una API REST utilizando express y definimos el número de puerto. 
+Posteriormente, creamos un objeto llamado "tareas" que funcionará como base para todos los métodos definidos a continuación:
 
 ##GET request - /tareas
 Devuelve una lista de todas las tareas

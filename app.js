@@ -1,4 +1,4 @@
-const express = require("express"); // Importa ExpressJS. Más info de Express en =>https://expressjs.com/es/starter/hello-world.html
+const express = require("express"); // Importa ExpressJS
 
 const app = express(); // Crea una instancia de ExpressJS
 
@@ -18,16 +18,12 @@ app.get("/tareas", (req, res) => {
 });
 
 app.get("/tareas/:index", (req, res) => {
-  /*La propiedad "params" del request permite acceder a los parámetros de la URL 
-    (importante no confundir con la "query", que serían los parámetros que se colocan 
-    luego del signo "?" en la URL)
-   */
+ 
   res.json(tareas[req.params.index]); // Enviamos el elemento solicitado por su índice
 });
 
 app.post("/tareas", (req, res) => {
-  /* La propiedad "body" del request permite acceder a los datos 
-       que se encuentran en el cuerpo de la petición */
+ 
   let newElem = {id: tareas[tareas.length-1].id+1,
                  tarea: req.body.tarea}
 
@@ -37,9 +33,7 @@ app.post("/tareas", (req, res) => {
 });
 
 app.put("/tareas/:index", (req, res) => {
-  /* COMPLETA EL CÓDIGO NECESARIO:
-     Para que se pueda actualizar el objeto asociado al índice indicado en la URL 
-   */
+ 
   if (tareas.filter((p)=> p.id === Number(req.params.index)).length > 0) { //Chequea si existe un elemento con esa ID
     posicionElem = tareas.map((p)=> p.id).indexOf(Number(req.params.index)) //Encontramos la posicion del elemento en el array
     nuevoElem = req.body
@@ -53,9 +47,7 @@ app.put("/tareas/:index", (req, res) => {
 });
 
 app.delete("/tareas/:index", (req, res) => {
-  /* COMPLETA EL CÓDIGO NECESARIO:
-     Para que se pueda eliminar el objeto asociado al índice indicado en la URL 
-   */
+  
   //console.log(Number(req.params.index) !== tareas[2].id)
   tareas = tareas.filter((p)=>{return p.id !== Number(req.params.index)})
   res.json(tareas)
